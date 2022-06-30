@@ -8,6 +8,7 @@
 [![Whatsapp][whatsapp-shield]][whatsapp-url]
 [![Telegram][telegram-shield]][telegram-url]
 [![Website][website-shield]][website-url]
+[![Github][github-shield]][github-url]
 
 - 😄 I'm a full stack web3 developer, having over 11 years of professional experiance in wide variety of fields.
 - 🔭 I’m currently working in Omaxe Ltd, a real estate company in India as Senior Consultant, handling multiple projects in blockchain, machine learning, and data analytics.
@@ -39,6 +40,9 @@
 
 [website-shield]: https://img.shields.io/badge/Website-yellow?style=for-the-badge&logo=Iconify
 [website-url]: https://manasvi.co.in
+
+[github-shield]: https://img.shields.io/badge/Github-gray?style=for-the-badge&logo=github
+[github-url]: https://github.com/manasvimohan/
 
 [product-screenshot]: images/screenshot.png
 
