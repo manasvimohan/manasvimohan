@@ -5,10 +5,11 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Youtube][youtube-shield]][youtube-url]
 [![Twitter][twitter-shield]][twitter-url]
+[![Github][github-shield]][github-url]
 [![Whatsapp][whatsapp-shield]][whatsapp-url]
 [![Telegram][telegram-shield]][telegram-url]
 [![Website][website-shield]][website-url]
-[![Github][github-shield]][github-url]
+
 
 - 😄 I'm a full stack web3 developer, having over 11 years of professional experiance in wide variety of fields.
 - 🔭 I’m currently working in Omaxe Ltd, a real estate company in India as Senior Consultant, handling multiple projects in blockchain, machine learning, and data analytics.
