@@ -21,9 +21,20 @@
 
 
 
-
 <!---------------------------- MARKDOWN LINKS & IMAGES ---------------------------->
 <!------ https://www.markdownguide.org/basic-syntax/#reference-style-links -------->
+
+<!-- How linking works
+1. Define links
+[image-url]: https://image.shutterstock.com/image-photo/summer-cocktail-grapefruit-rosemary-juicy-600w-1936605118.jpg
+[any-url]: https://google.com
+
+2. Use Links
+![Any-Image-Link][image-url] <-- This shows the image, notice the "!" in the start
+[Any-Link][any-url] <-- This Becomes clickble
+
+-->
+
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: https://www.linkedin.com/in/manasvi-m/
 
