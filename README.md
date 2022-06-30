@@ -2,12 +2,48 @@
 
 ## Hi there 👋, I'm Manasvi!
     
-[![Manasvi's Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/manasvi-m/)
-[![Manasvi Vlog YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCAj6U-1KBWbejLuj7CtETDA)
-[![Manasvi's Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/manasvimsharma)
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Youtube][youtube-shield]][youtube-url]
+[![Twitter][twitter-shield]][twitter-url]
+[![Whatsapp][whatsapp-shield]][whatsapp-url]
+[![Telegram][telegram-shield]][telegram-url]
+[![Website][website-shield]][website-url]
 
 - 😄 I'm a full stack web3 developer, having over 11 years of professional experiance in wide variety of fields.
 - 🔭 I’m currently working in Omaxe Ltd, a real estate company in India as Senior Consultant, handling multiple projects in blockchain, machine learning, and data analytics.
+
+
+
+
+
+
+
+
+
+<!---------------------------- MARKDOWN LINKS & IMAGES ---------------------------->
+<!------ https://www.markdownguide.org/basic-syntax/#reference-style-links -------->
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
+[linkedin-url]: https://www.linkedin.com/in/manasvi-m/
+
+[youtube-shield]: https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white
+[youtube-url]: https://www.youtube.com/channel/UCAj6U-1KBWbejLuj7CtETDA
+
+[twitter-shield]: https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white
+[twitter-url]: https://twitter.com/manasvimsharma
+
+[whatsapp-shield]: https://img.shields.io/badge/WhatsApp-green?style=for-the-badge&logo=appveyor
+[whatsapp-url]: https://wa.me/919899447040
+
+[telegram-shield]: https://img.shields.io/badge/Telegram-blue?style=for-the-badge&logo=appveyor
+[telegram-url]: https://t.me/manasvimohan
+
+[website-shield]: https://img.shields.io/badge/Website-yellow?style=for-the-badge&logo=appveyor
+[website-url]: https://manasvi.co.in
+
+[product-screenshot]: images/screenshot.png
+
+
+
 
 <!--
 #### Github Stats 📊
