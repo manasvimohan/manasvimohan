@@ -1,4 +1,18 @@
+<div id="top"></div>
 
+<!--
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#about-me">About Me</a></li>
+    <li><a href="#what-i-am-currently-working-on">What I am currently working on</a></li>
+    <li><a href="#other-stuff">Other Stuff</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+-->
 
 ## Hi there 👋, I'm Manasvi!
     
