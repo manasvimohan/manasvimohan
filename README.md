@@ -26,28 +26,10 @@
 
 
 - 😄 I'm a full stack web3 developer, having over 11 years of professional experiance in wide variety of fields.
-- 🔭 I’m currently working in Omaxe Ltd, a real estate company in India as Senior Consultant, handling multiple projects in blockchain, machine learning, and data analytics.
-
-
-
-
-
-
-
+- 🔭 I’m currently working at Sterlite Technologies as Senior Tech Lead, which is a multi national company and leading integrator of digital networks providing all-in 5G solutions.
+- 📃 Previously I worked in Omaxe Ltd, a real estate company in India, handling multiple projects in blockchain, machine learning, and data analytics.
 
 <!---------------------------- MARKDOWN LINKS & IMAGES ---------------------------->
-<!------ https://www.markdownguide.org/basic-syntax/#reference-style-links -------->
-
-<!-- How linking works
-1. Define links
-[image-url]: https://image.shutterstock.com/image-photo/summer-cocktail-grapefruit-rosemary-juicy-600w-1936605118.jpg
-[any-url]: https://google.com
-
-2. Use Links
-![Any-Image-Link][image-url] <-- This shows the image, notice the "!" in the start
-[Any-Link][any-url] <-- This Becomes clickble
-
--->
 
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: https://www.linkedin.com/in/manasvi-m/
@@ -75,7 +57,25 @@
 
 
 
-<!--
+
+
+
+
+
+
+
+<!---------------------------- MARKDOWN LINKS & IMAGES ---------------------------->
+<!------ https://www.markdownguide.org/basic-syntax/#reference-style-links -------->
+
+<!-- How linking works
+1. Define links
+[image-url]: https://image.shutterstock.com/image-photo/summer-cocktail-grapefruit-rosemary-juicy-600w-1936605118.jpg
+[any-url]: https://google.com
+
+2. Use Links
+![Any-Image-Link][image-url] <-- This shows the image, notice the "!" in the start
+[Any-Link][any-url] <-- This Becomes clickble
+
 #### Github Stats 📊
 [![Manasvi's github stats](https://github-readme-stats.vercel.app/api?username=manasvimohan)](https://github.com/anuraghazra/github-readme-stats)
 
