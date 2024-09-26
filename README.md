@@ -24,10 +24,28 @@
 [![Telegram][telegram-shield]][telegram-url]
 [![Website][website-shield]][website-url]
 
+🌟 Currently a Solution Architect at Stellantis, having over 14 years of professional experiance in wide variety of fields, I thrive in the world of Full Stack Development and leadership. Before this, I was a Senior Tech Lead at Sterlite Technologies.
 
-- 😄 I'm a full stack web3 developer, having over 11 years of professional experiance in wide variety of fields.
+🚀 My Tech Stack
+- Languages: Python, JavaScript, Solidity
+- Scripting: Shell Scripting
+- Cloud: AWS, GCP
+- Blockchain: Ethereum Virtual Machine, Smart Contracts
+
+🌍 Domains of Expertise
+- Life Sciences & Process Manufacturing
+- Automobile Industry
+- Artificial Intelligence, Machine Learning, NLP, and LLM
+
+I’m passionate about solving complex problems and building innovative solutions. Let’s connect and create something amazing! 🤝
+
+Feel free to explore my repositories and reach out! 💬
+
+<!----- Previous
+- 😄 I'm a full stack web3 developer, having over 14 years of professional experiance in wide variety of fields.
 - 🔭 I’m currently working at Sterlite Technologies as Senior Tech Lead, which is a multi national company and leading integrator of digital networks providing all-in 5G solutions.
 - 📃 Previously I worked in Omaxe Ltd, a real estate company in India, handling multiple projects in blockchain, machine learning, and data analytics.
+----->
 
 <!---------------------------- MARKDOWN LINKS & IMAGES ---------------------------->
 
