@@ -39,7 +39,7 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.7;
 }
 main {
@@ -59,19 +59,19 @@ h6 {
   line-height: 1.2;
 }
 h1 {
-  font-size: 3.052em;
+  font-size: 2.5em;
 }
 h2 {
-  font-size: 2.441em;
+  font-size: 2.1em;
 }
 h3 {
-  font-size: 1.953em;
+  font-size: 1.8em;
 }
 h4 {
-  font-size: 1.563em;
+  font-size: 1.5em;
 }
 h5 {
-  font-size: 1.25em;
+  font-size: 1.2em;
 }
 strong,
 b {
@@ -85,6 +85,7 @@ a:hover {
 }
 p {
   margin-bottom: 1em;
+  font-size: 1.1rem;
 }
 .prose p {
   margin-bottom: 2em;
