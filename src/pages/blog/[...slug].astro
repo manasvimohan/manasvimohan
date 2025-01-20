@@ -1,21 +1,49 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
-import { render } from 'astro:content';
+import {type CollectionEntry, getCollection} from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import {render} from "astro:content";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: {slug: post.id},
+    props: post,
+  }));
 }
-type Props = CollectionEntry<'blog'>;
+
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { Content } = await render(post);
+const {Content} = await render(post);
+
+// Get all published posts
+const allPosts = (await getCollection("blog"))
+  .filter((post) => post.data.published) // Include only published posts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Extract related posts by tags
+const postTags = post.data.tags.split(",").map((tag) => tag.trim());
+const relatedByTags = allPosts.filter(
+  (p) =>
+    p.id !== post.id &&
+    p.data.tags.split(",").some((tag) => postTags.includes(tag.trim()))
+);
+
+// Extract related posts by category
+const postCategories = post.data.category.split(",").map((cat) => cat.trim());
+const relatedByCategories = allPosts.filter(
+  (p) =>
+    p.id !== post.id &&
+    p.data.category
+      .split(",")
+      .some((cat) => postCategories.includes(cat.trim()))
+);
 ---
 
-<BlogPost {...post.data}>
-	<Content />
+<BlogPost
+  {...post.data}
+  relatedByTags={relatedByTags}
+  relatedByCategories={relatedByCategories}
+>
+  <Content />
 </BlogPost>

@@ -5,23 +5,52 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & {
+  relatedByTags: CollectionEntry<"blog">[];
+  relatedByCategories: CollectionEntry<"blog">[];
+};
 
-const {title, description, pubDate, updatedDate, heroImage} = Astro.props;
-import mermaid from "mermaid";
+const {
+  title,
+  description,
+  descriptionFB,
+  descriptionTW,
+  pubDate,
+  updatedDate,
+  heroImage,
+  relatedByTags,
+  relatedByCategories,
+} = Astro.props;
 
-mermaid.initialize({startOnLoad: true});
+// console.log(Astro.props);
+// console.log(relatedByTags);
+// console.log(relatedByCategories);
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead 
+    title={title} 
+    description={description} 
+    descriptionFB={descriptionFB} 
+    descriptionTW={descriptionTW}
+    />
+
     <style>
-      main {
-        width: calc(100% - 2em);
-        max-width: 100%;
-        margin: 0;
-      }
+      .container {
+      display: flex;
+      height: 70vh; /* Full viewport height */
+      overflow: hidden;
+    }
+
+    article {
+      /* margin-left: 200px; Same as fixed-left's width */
+      padding: 20px;
+      overflow-y: auto; /* Enables vertical scrolling */
+      /* height: 100vh; Full height to make scrolling possible */
+      background-color: #f4f4f4;
+    }
+
       .hero-image {
         width: 100%;
       }
@@ -54,13 +83,104 @@ mermaid.initialize({startOnLoad: true});
       .last-updated-on {
         font-style: italic;
       }
+      .sidebar {
+        min-width: 20vh;
+        /* position: fixed; */
+        /* top: 9rem;
+        right: 3%; */
+        height: 70vh;
+        width: 10vw;
+        /* max-width: 100%; */
+        padding: 1rem;
+        background-color: rgb(var(--gray-light));
+        border-radius: 8px;
+        box-shadow: var(--box-shadow);
+        font-size: 15px;
+        overflow: auto;
+      }
+      @media (orientation: portrait) {
+  .sidebar {
+        position: fixed; 
+        bottom: 2rem;
+        height: 10vh; 
+        width: 90vw;
+        background: rgba(255, 255, 255, 0.904);
+  }
+}
+      .related-posts {
+        margin-bottom: 2rem;
+      }
+      .related-posts h3 {
+        margin-bottom: 1rem;
+        font-size: 1.25em;
+      }
+      .related-posts ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      .related-posts ul li a {
+        text-decoration: none;
+        color: rgb(var(--accent));
+        transition: color 0.2s;
+      }
+      .related-posts ul li a:hover {
+        color: rgb(var(--black));
+      }
+      .related-links {
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        transition: 0.2s;
+      }
+      .related-links:hover {
+        scale:1.1;
+      }
     </style>
   </head>
 
   <body>
     <Header />
     <main>
-      <article>
+      <div class="container">
+          {(relatedByTags && relatedByTags.length > 0) || (relatedByCategories && relatedByCategories.length > 0) ? (
+      <aside class="sidebar">
+        <!-- Related Posts by Tags -->
+        {
+          relatedByTags.length > 0 && (
+            <div class="related-posts">
+              <h3>Related by Tags</h3>
+              <ul>
+                {relatedByTags.map((post) => (
+                  <div class="sidebar-blogs">
+                    <div class="related-links" onclick=`window.location.href="/blog/${post.id}/";`>{post.data.title}</div>
+                  </div>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        <!-- Related Posts by Categories -->
+        {
+          relatedByCategories.length > 0 && (
+            <div class="related-posts">
+              <h3>Related Articles</h3>
+              <ul>
+                {relatedByCategories.map((post) => (
+                  <div class="sidebar-blogs">
+                    <div class="related-links" onclick=`window.location.href="/blog/${post.id}/";`>{post.data.title}</div>
+                  </div>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+        </aside>) : null}
+
+         <article>
         <div class="hero-image">
           {
             heroImage && (
@@ -86,6 +206,7 @@ mermaid.initialize({startOnLoad: true});
           <slot />
         </div>
       </article>
+      </div>
     </main>
     <Footer />
   </body>
