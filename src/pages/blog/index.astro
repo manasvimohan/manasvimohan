@@ -6,9 +6,24 @@ import {SITE_TITLE, SITE_DESCRIPTION} from "../../consts";
 import {getCollection} from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 
+// Get all posts
 const posts = (await getCollection("blog"))
   .filter((post) => post.data.published) // Include only published posts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Extract unique tags and categories
+const uniqueTags = Array.from(
+  new Set(
+    posts.flatMap((post) => post.data.tags.split(",").map((tag) => tag.trim()))
+  )
+);
+const uniqueCategories = Array.from(
+  new Set(
+    posts.flatMap((post) =>
+      post.data.category.split(",").map((cat) => cat.trim())
+    )
+  )
+);
 ---
 
 <!doctype html>
@@ -18,6 +33,37 @@ const posts = (await getCollection("blog"))
     <style>
       main {
         width: 960px;
+        margin: auto;
+      }
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        background-color: rgb(var(--accent-light));
+        color: rgb(var(--black));
+        border: 1px solid rgb(var(--gray));
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        text-transform: capitalize;
+        margin-right: 0.3rem;
+        margin-top: 0.3rem;
+        box-shadow: 0 1px 2px rgba(var(--gray), 25%);
+      }
+      .filter-btn.active {
+        background-color: rgb(var(--accent));
+        color: rgb(24, 55, 139);
+        font-weight: 900;
+      }
+      .filter-btn:hover {
+        background-color: white;
+        color: black;
+        scale: 1.2;
+        box-shadow: 0 4px 7px rgba(var(--gray), 45%);
       }
       ul {
         display: flex;
@@ -34,7 +80,7 @@ const posts = (await getCollection("blog"))
         text-decoration: none;
         transition: 0.2s ease;
       }
-      ul li:first-child {
+      /* ul li:first-child {
         width: 100%;
         margin-bottom: 1rem;
         text-align: center;
@@ -44,7 +90,7 @@ const posts = (await getCollection("blog"))
       }
       ul li:first-child .title {
         font-size: 2.369rem;
-      }
+      } */
       ul li img {
         margin-bottom: 0.5rem;
         border-radius: 12px;
@@ -88,11 +134,40 @@ const posts = (await getCollection("blog"))
   <body>
     <Header />
     <main>
+      <!-- Filter buttons -->
+      <div class="filters" id="filters">
+        <!-- <div>
+          Tags:
+          {
+            uniqueTags.map((tag) => (
+              <button class="filter-btn" data-filter={tag}>
+                # {tag}
+              </button>
+            ))
+          }
+        </div> -->
+        <div>
+          Categories:
+          {
+            uniqueCategories.map((category) => (
+              <button class="filter-btn" data-filter={category}>
+                {category}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Blog posts -->
       <section>
-        <ul>
+        <ul id="posts">
           {
             posts.map((post) => (
-              <li>
+              <li
+                class="post-item"
+                data-tags={post.data.tags}
+                data-categories={post.data.category}
+              >
                 <a href={`/blog/${post.id}/`}>
                   <img
                     width={720}
@@ -112,5 +187,36 @@ const posts = (await getCollection("blog"))
       </section>
     </main>
     <Footer />
+    <script>
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const posts = document.querySelectorAll(".post-item");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.getAttribute("data-filter");
+
+          // Toggle active state
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+
+          // Filter posts
+          posts.forEach((post) => {
+            const tags = post
+              .getAttribute("data-tags")
+              .split(",")
+              .map((tag) => tag.trim());
+            const categories = post
+              .getAttribute("data-categories")
+              .split(",")
+              .map((cat) => cat.trim());
+            if (tags.includes(filter) || categories.includes(filter)) {
+              post.style.display = "block";
+            } else {
+              post.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
