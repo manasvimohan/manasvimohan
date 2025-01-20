@@ -9,7 +9,7 @@ import {SITE_TITLE} from "../consts";
     <div class="internal-links">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
+      <!-- <HeaderLink href="/about">About</HeaderLink> -->
     </div>
     <div class="social-links">
       <a
@@ -87,3 +87,16 @@ import {SITE_TITLE} from "../consts";
     }
   }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPT2QWMJ56"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DPT2QWMJ56");
+  console.log(window.dataLayer);
+</script>
