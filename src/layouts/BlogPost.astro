@@ -20,6 +20,7 @@ const {
   heroImage,
   relatedByTags,
   relatedByCategories,
+  author
 } = Astro.props;
 
 // console.log(Astro.props);
@@ -100,12 +101,16 @@ const {
       }
       @media (orientation: portrait) {
   .sidebar {
+    display: none;
         position: fixed; 
         bottom: 2rem;
         height: 10vh; 
-        width: 90vw;
+        width: 60vw;
         background: rgba(255, 255, 255, 0.904);
   }
+        .intro{
+        flex-direction: column;
+      }
 }
       .related-posts {
         margin-bottom: 2rem;
@@ -137,6 +142,10 @@ const {
       }
       .related-links:hover {
         scale:1.1;
+      }
+      .intro{
+        display: flex;
+        /* flex-direction: column; */
       }
     </style>
   </head>
@@ -181,6 +190,9 @@ const {
         </aside>) : null}
 
          <article>
+
+          <div class="intro">
+
         <div class="hero-image">
           {
             heroImage && (
@@ -190,6 +202,7 @@ const {
         </div>
         <div class="prose">
           <div class="title">
+            <h1>{title}</h1>
             <div class="date">
               <FormattedDate date={pubDate} />
               {
@@ -199,14 +212,15 @@ const {
                   </div>
                 )
               }
+            <div>by {author}</div>
             </div>
-            <h1>{title}</h1>
             <hr />
           </div>
-          <slot />
+          </div>
         </div>
-      </article>
+        <slot />
       </div>
+      </article>
     </main>
     <Footer />
   </body>
