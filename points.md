@@ -23,3 +23,9 @@ Gaming
 Sustainability & Environment
 Entertainment
 Mental Health
+
+# Viral posts prompt
+
+Write a self centered cringe post for linkedin which has super viral formula on travelling
+
+Keep it short, with lots of emojis and funny sarcastic
