@@ -15,8 +15,11 @@ const blog = defineCollection({
 		tags: z.string(),
 		category: z.string(),
 		author: z.string(),
-		  descriptionFB: z.string(),
-  descriptionTW: z.string(),
+		descriptionFB: z.string(),
+		descriptionTW: z.string(),
+		bundle: z.string().optional(), // The category bundle item falls in
+		membership: z.string().optional(), // membership Level open too
+		appxtokenusage: z.string().optional() // This is prompt + response tokens --- 4o-mini per million is 0.6$
 	}),
 });
 
