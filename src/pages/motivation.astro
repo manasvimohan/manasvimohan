@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Text Display</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass+Mono:wght@300..700&family=Playwrite+CO+Guides&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        font-size: 33px;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        background-color: black;
+        color: white;
+        padding: 0 2rem 0 2rem;
+        overflow-y: hidden;
+        font-family: "Tomorrow", sans-serif;
+        font-weight: 200;
+        font-style: normal;
+      }
+      #randomText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .proverb,
+      .source {
+        text-align: center;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-animation 8s ease infinite; /* Slow animation */
+      }
+      .proverb {
+        font-size: 1.5rem;
+      }
+      .source {
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+      .buttonsPlaceholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+        position: fixed;
+        top: 0.3rem;
+        font-size: 0.5rem;
+      }
+      .button {
+        padding: 0.2rem;
+        border: 0.01rem solid white;
+        animation-duration: 2px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .button:hover {
+        scale: 1.1;
+      }
+
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      /* Media query for screens with width or height less than 500px */
+      @media screen and (max-width: 500px), screen and (max-height: 500px) {
+        html {
+          font-size: 21px; /* Adjust font size */
+        }
+      }
+
+      /* Media query for screens with width or height less than 500px */
+      @media screen and (max-height: 400px) {
+        html {
+          font-size: 17px; /* Adjust font size */
+        }
+      }
+
+      /* Media query for screens with width or height more than 1200px */
+      @media screen and (min-width: 1200px), screen and (min-height: 1200px) {
+        html {
+          font-size: 45px; /* Adjust font size */
+        }
+      }
+      .active {
+        border: 0.01rem solid rgb(216, 108, 41);
+        color: rgb(216, 108, 41);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="buttonsPlaceholder">
+      <div id="prov" class="button" onclick="showProverbs()">Proverbs</div>
+      <div id="aff" class="button" onclick="showAffirmations()">
+        Affirmations
+      </div>
+      <div id="foc" class="button active" onclick="showFocus()">Focus</div>
+    </div>
+    <div id="randomText"></div>
+
+    <script>
+      const focusArray = [
+        `<div class="proverb">Amazon KDP</div><div class="source">Focus</div>`,
+      ];
+      const affirmations = [
+        `<div class="proverb">💰 I am worthy of financial abundance and success. 💰</div><div class="source">Wealth Affirmation</div>`,
+        `<div class="proverb">💪 My body is healthy, and I am filled with energy. 💪</div><div class="source">Health Affirmation</div>`,
+        `<div class="proverb">🍀 Luck flows to me effortlessly and continuously. 🍀</div><div class="source">Luck Affirmation</div>`,
+        `<div class="proverb">💸 Money comes to me in expected and unexpected ways. 💸</div><div class="source">Wealth Affirmation</div>`,
+        `<div class="proverb">🧘 I prioritize my well-being and make choices that support my health. 🧘</div><div class="source">Health Affirmation</div>`,
+        `<div class="proverb">🍀 I attract good fortune and prosperity with every step I take. 🍀</div><div class="source">Luck Affirmation</div>`,
+        `<div class="proverb">💰 Abundance is my natural state, and I welcome wealth into my life. 💰</div><div class="source">Wealth Affirmation</div>`,
+        `<div class="proverb">💖 I love and respect my body, nourishing it with healthy food and thoughts. 💖</div><div class="source">Health Affirmation</div>`,
+        `<div class="proverb">🌟 I am a magnet for positive opportunities and fortunate events. 🌟</div><div class="source">Luck Affirmation</div>`,
+        `<div class="proverb">💸 I am a savvy investor, and my financial wisdom grows every day. 💸</div><div class="source">Wealth Affirmation</div>`,
+        `<div class="proverb">🌿 Every cell in my body radiates vitality and health. 🌿</div><div class="source">Health Affirmation</div>`,
+        `<div class="proverb">🍀 I am open to receiving all the blessings and good fortune that life has to offer. 🍀</div><div class="source">Luck Affirmation</div>`,
+        `<div class="proverb">💰 I attract opportunities that lead to wealth and prosperity. 💰</div><div class="source">Wealth Affirmation</div>`,
+        `<div class="proverb">🧘‍♀️ I honor my body with proper rest, exercise, and mindful practices. 🧘‍♀️</div><div class="source">Health Affirmation</div>`,
+        `<div class="proverb">🌟 My life is full of abundance and good luck at every turn. 🌟</div><div class="source">Luck Affirmation</div>`,
+        `<div class="proverb">💸 I am constantly attracting financial abundance into my life. 💸</div><div class="source">Wealth Affirmation</div>`,
+        `<div class="proverb">💚 I am strong, healthy, and my body is a reflection of my positive thoughts. 💚</div><div class="source">Health Affirmation</div>`,
+        `<div class="proverb">🍀 I am always in the right place at the right time, attracting luck and opportunities. 🍀</div><div class="source">Luck Affirmation</div>`,
+        `<div class="proverb">💰 My financial future is bright, and I create wealth with ease. 💰</div><div class="source">Wealth Affirmation</div>`,
+        `<div class="proverb">💪 Every day, I feel stronger and healthier in my mind and body. 💪</div><div class="source">Health Affirmation</div>`,
+        `<div class="proverb">🌟 I radiate positivity, and luck flows effortlessly toward me. 🌟</div><div class="source">Luck Affirmation</div>`,
+        `<div class="proverb">🌟 I am the operant power in my life, and I create my reality through my thoughts. 🌟</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">💰 Wealth is my divine right, and I claim it now. 💰</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">🌿 I am in perfect health, and I radiate vitality and strength. 🌿</div><div class="source">Florence Scovel Shinn</div>`,
+        `<div class="proverb">🍀 My thoughts are creative, and I am living in abundance and prosperity. 🍀</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">🌟 I am one with the infinite source of all good, and I am worthy of its blessings. 🌟</div><div class="source">Florence Scovel Shinn</div>`,
+        `<div class="proverb">💫 I accept that all good things are already mine. I believe in the divine flow of prosperity. 💫</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">💪 I visualize myself in perfect health, and my body responds with vitality and energy. 💪</div><div class="source">Florence Scovel Shinn</div>`,
+        `<div class="proverb">🍀 I trust the law of attraction, and I allow good fortune to flow freely into my life. 🍀</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">💰 I am in divine order and am receiving limitless opportunities for wealth and abundance. 💰</div><div class="source">Florence Scovel Shinn</div>`,
+        `<div class="proverb">🌱 I am thankful for the health that is now manifesting in my body and mind. 🌱</div><div class="source">Florence Scovel Shinn</div>`,
+        `<div class="proverb">💫 I vividly imagine myself successful, and I attract success with every thought. 💫</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">💸 My subconscious mind is programmed for abundance, and wealth flows to me effortlessly. 💸</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">🍀 I give thanks for the endless supply of good fortune, and it multiplies each day. 🍀</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">💪 I am the picture of perfect health, and my body is a reflection of my vibrant energy. 💪</div><div class="source">Florence Scovel Shinn</div>`,
+        `<div class="proverb">🌟 Every thought I think and every word I speak brings me closer to my ideal reality. 🌟</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">💰 I affirm my prosperity daily and believe that money flows easily into my life. 💰</div><div class="source">Florence Scovel Shinn</div>`,
+        `<div class="proverb">🌱 I now choose to believe that perfect health and wellness are mine. 🌱</div><div class="source">Florence Scovel Shinn</div>`,
+        `<div class="proverb">🍀 All things are working together for my good, and luck follows me wherever I go. 🍀</div><div class="source">Neville Goddard</div>`,
+      ];
+      const proverbsArray = [
+        `<div class="proverb">🌳 A tree is known by its fruit. 🌳</div><div class="source">Southern African Proverb</div>`,
+        `<div class="proverb">🐎 The old horse in the stable still yearns to run. 🐎</div><div class="source">Asian Proverb</div>`,
+        `<div class="proverb">🎣 Give a man a fish and you feed him for a day; teach a man to fish and you feed him for a lifetime. 🎣</div><div class="source">Asian Proverb</div>`,
+        `<div class="proverb">🐒 A monkey in silk is a monkey no less. 🐒</div><div class="source">American Proverb</div>`,
+        `<div class="proverb">⏰ Early to bed and early to rise, makes a man healthy, wealthy and wise. ⏰</div><div class="source">English Proverb</div>`,
+        `<div class="proverb">😂 Laugh and the world laughs with you, weep and you weep alone. 😢</div><div class="source">English Proverb</div>`,
+        `<div class="proverb">🦁 An army of sheep led by a lion would defeat an army of lions led by a sheep. 🐑</div><div class="source">Arabic Proverb</div>`,
+        `<div class="proverb">✨ Even a small star shines in the darkness. ✨</div><div class="source">Finnish Proverb</div>`,
+        `<div class="proverb">♟️ After the game, the king and pawn go into the same box. ♟️</div><div class="source">Italian Proverb</div>`,
+        `<div class="proverb">👩‍👧 God could not be everywhere and therefore he made mothers. 👩‍👧</div><div class="source">Jewish Proverb</div>`,
+        `<div class="proverb">😊 Shared joy is a double joy; shared sorrow is half a sorrow. 😢</div><div class="source">Swedish Proverb</div>`,
+        `<div class="proverb">⚖️ Words should be weighed, not counted. ⚖️</div><div class="source">Yiddish Proverb</div>`,
+        `<div class="proverb">🌊 Do good and throw it in the sea. 🌊</div><div class="source">Arabic Proverb</div>`,
+        `<div class="proverb">❤️ Where love reigns, the impossible may be attained. ❤️</div><div class="source">Indian Proverb</div>`,
+        `<div class="proverb">⏳ Truth is more valuable if it takes you a few years to find it. ⏳</div><div class="source">French Proverb</div>`,
+        `<div class="proverb">📘 There is no shame in not knowing; the shame lies in not finding out. 📘</div><div class="source">Russian Proverb</div>`,
+        `<div class="proverb">🦷 A loose tooth will not rest until it’s pulled out. 🦷</div><div class="source">African Proverb</div>`,
+        `<div class="proverb">🚶 The path is made by walking. 🚶</div><div class="source">African Proverb</div>`,
+        `<div class="proverb">💧 Drop by drop you break the rock. 💧</div><div class="source">Italian Proverb</div>`,
+        `<div class="proverb">🌲 The tree often hides the forest. 🌲</div><div class="source">French Proverb</div>`,
+        `<div class="proverb">🌊 Do not push the river, it will flow itself. 🌊</div><div class="source">Polish Proverb</div>`,
+        `<div class="proverb">📏 Measure a thousand times and cut once. 📏</div><div class="source">Turkish Proverb</div>`,
+        `<div class="proverb">🗣️ Whoever gossips to you will gossip about you. 🗣️</div><div class="source">Spanish Proverb</div>`,
+        `<div class="proverb">🚣 Don’t sail out farther than you can row back. 🚣</div><div class="source">Danish Proverb</div>`,
+        `<div class="proverb">👣 If you take big paces, you leave big spaces. 👣</div><div class="source">Burmese Proverb</div>`,
+        `<div class="proverb">⚽ Before you score, you first must have a goal. ⚽</div><div class="source">Greek Proverb</div>`,
+        `<div class="proverb">🛠️ Good advice is often annoying, bad advice never is. 🛠️</div><div class="source">French Proverb</div>`,
+        `<div class="proverb">✒️ Instruction in youth is like engraving in stone. ✒️</div><div class="source">Moroccan Proverb</div>`,
+        `<div class="proverb">🌺 A beautiful thing is never perfect. 🌺</div><div class="source">Egyptian Proverb</div>`,
+        `<div class="proverb">☀️ Turn your face toward the sun and the shadows fall behind you. ☀️</div><div class="source">Maori Proverb</div>`,
+        `<div class="proverb">🤏 Better little than too little. 🤏</div><div class="source">Cameroonian Proverb</div>`,
+        `<div class="proverb">👫 Tell me who your friends are, so I can tell you who you are. 👫</div><div class="source">Bulgarian Proverb</div>`,
+        `<div class="proverb">🐣 Don’t count your chickens before they’re hatched. 🐣</div><div class="source">Australian Proverb</div>`,
+        `<div class="proverb">💪 To be willing is only half the task. 💪</div><div class="source">Armenian Proverb</div>`,
+        `<div class="proverb">☀️ When the sun rises, it rises for everyone. ☀️</div><div class="source">Cuban Proverb</div>`,
+        `<div class="proverb">🛶 No man can paddle two canoes at the same time. 🛶</div><div class="source">Bantu Proverb</div>`,
+        `<div class="proverb">👴 Age is honorable and youth is noble. 👶</div><div class="source">Irish Proverb</div>`,
+        `<div class="proverb">🍃 The tree with most leaves will not necessarily produce juicy fruit. 🍃</div><div class="source">Brazilian Proverb</div>`,
+        `<div class="proverb">👩‍👦 A mother understands what a child does not say. 👩‍👦</div><div class="source">Yiddish Proverb</div>`,
+        `<div class="proverb">🛠️ A bad worker blames his tools. 🛠️</div><div class="source">Australian Proverb</div>`,
+        `<div class="proverb">🤝 If you want to go fast, go alone. If you want to go far, go together. 🤝</div><div class="source">African Proverb</div>`,
+        `<div class="proverb">📈 Fall seven times, stand up eight. 📈</div><div class="source">Japanese Proverb</div>`,
+        `<div class="proverb">🌳 Wisdom is like a baobab tree; no one individual can embrace it. 🌳</div><div class="source">African Proverb</div>`,
+        `<div class="proverb">🐦 The early bird catches the worm. 🐦</div><div class="source">English Proverb</div>`,
+        `<div class="proverb">👣 A journey of a thousand miles begins with a single step. 👣</div><div class="source">Chinese Proverb</div>`,
+        `<div class="proverb">💪 He who has health has hope, and he who has hope has everything. 💪</div><div class="source">Arabian Proverb</div>`,
+        `<div class="proverb">🕯️ Better to light a candle than to curse the darkness. 🕯️</div><div class="source">Chinese Proverb</div>`,
+        `<div class="proverb">🐣 Don’t count your chickens before they hatch. 🐣</div><div class="source">English Proverb</div>`,
+        `<div class="proverb">🔥 The child who is not embraced by the village will burn it down to feel its warmth. 🔥</div><div class="source">African Proverb</div>`,
+        `<div class="proverb">🤝 If you want to go fast, go alone. If you want to go far, go together. 🤝</div><div class="source">African Proverb</div>`,
+        `<div class="proverb">💥 A man who uses force is afraid of reasoning. 💥</div><div class="source">Kenyan Proverb</div>`,
+        `<div class="proverb">❓ The one who asks questions doesn’t lose their way. ❓</div><div class="source">Native American Proverb</div>`,
+        `<div class="proverb">🦅 A bird does not change its feathers because the weather is bad. 🦅</div><div class="source">Jamaican Proverb</div>`,
+        `<div class="proverb">🤷‍♂️ He who doesn’t know one thing knows another. 🤷‍♂️</div><div class="source">Spanish Proverb</div>`,
+        `<div class="proverb">👯‍♂️ A friend in need is a friend indeed. 👯‍♂️</div><div class="source">English Proverb</div>`,
+        `<div class="proverb">🌅 Don't let the sun go down on your anger. 🌅</div><div class="source">Hebrew Proverb</div>`,
+        `<div class="proverb">🛡️ When there is no enemy within, the enemies outside cannot hurt you. 🛡️</div><div class="source">African Proverb</div>`,
+        `<div class="proverb">👑 In the land of the blind, the one-eyed man is king. 👑</div><div class="source">Latin Proverb</div>`,
+        `<div class="proverb">🌱 A fool looks for happiness in the distance; the wise grows it under his feet. 🌱</div><div class="source">Chinese Proverb</div>`,
+        `<div class="proverb">🎯 To understand the heart and mind of a person, look not at what they have already achieved, but at what they aspire to. 🎯</div><div class="source">Nigerian Proverb</div>`,
+        `<div class="proverb">🌳 When the roots of a tree begin to decay, it spreads death to the branches. 🌳</div><div class="source">Nigerian Proverb</div>`,
+        `<div class="proverb">🔄 If you want to know the end, look at the beginning. 🔄</div><div class="source">Japanese Proverb</div>`,
+        `<div class="proverb">🌱 The grass is always greener on the other side of the fence. 🌱</div><div class="source">American Proverb</div>`,
+        `<div class="proverb">🧠 A well-fed mind is a better weapon than a well-fed stomach. 🧠</div><div class="source">Indian Proverb</div>`,
+        `<div class="proverb">🍇 Patience is a bitter plant, but it has sweet fruit. 🍇</div><div class="source">German Proverb</div>`,
+        `<div class="proverb">🪴 Do not look where you fell, but where you slipped. 🪴</div><div class="source">African Proverb</div>`,
+        `<div class="proverb">🦁 When the lion is not there, the antelope dances. 🦌</div><div class="source">Zulu Proverb</div>`,
+        `<div class="proverb">🌾 You learn how to cut the grass by cutting it. 🌾</div><div class="source">Tanzanian Proverb</div>`,
+        `<div class="proverb">🧭 He who has a why to live can bear almost any how. 🧭</div><div class="source">German Proverb</div>`,
+        `<div class="proverb">🥚 Don’t put all your eggs in one basket. 🥚</div><div class="source">Spanish Proverb</div>`,
+        `<div class="proverb">🌕 The moon does not fight. It imposes itself. 🌕</div><div class="source">Chinese Proverb</div>`,
+        `<div class="proverb">⚖️ An ounce of prevention is worth a pound of cure. ⚖️</div><div class="source">American Proverb</div>`,
+        `<div class="proverb">🐺 When the wolf is hungry, he doesn't care about the sheep’s religion. 🐑</div><div class="source">Arab Proverb</div>`,
+        `<div class="proverb">⏳ If you wish to be rich, do not save money, but save time. ⏳</div><div class="source">Chinese Proverb</div>`,
+        `<div class="proverb">🌲 You cannot hide a large tree under a small shrub. 🌿</div><div class="source">Indian Proverb</div>`,
+        `<div class="proverb">🌌 The unexamined life is not worth living. 🌌</div><div class="source">Socrates</div>`,
+        `<div class="proverb">✨ In the middle of difficulty lies opportunity. ✨</div><div class="source">Albert Einstein</div>`,
+        `<div class="proverb">🌀 What you seek is seeking you. 🌀</div><div class="source">Rumi</div>`,
+        `<div class="proverb">🌠 Man is condemned to be free. 🌠</div><div class="source">Jean-Paul Sartre</div>`,
+        `<div class="proverb">💭 Happiness depends upon ourselves. 💭</div><div class="source">Aristotle</div>`,
+        `<div class="proverb">🕰️ It is not length of life, but depth of life. 🕰️</div><div class="source">Ralph Waldo Emerson</div>`,
+        `<div class="proverb">🌿 You must be the change you wish to see in the world. 🌿</div><div class="source">Mahatma Gandhi</div>`,
+        `<div class="proverb">🔥 He who has a why to live can bear almost any how. 🔥</div><div class="source">Friedrich Nietzsche</div>`,
+        `<div class="proverb">🔮 No one can make you feel inferior without your consent. 🔮</div><div class="source">Eleanor Roosevelt</div>`,
+        `<div class="proverb">🌊 Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. 🌊</div><div class="source">Buddha</div>`,
+        `<div class="proverb">🌟 To live is the rarest thing in the world. Most people exist, that is all. 🌟</div><div class="source">Oscar Wilde</div>`,
+        `<div class="proverb">🌏 Everything has beauty, but not everyone sees it. 🌏</div><div class="source">Confucius</div>`,
+        `<div class="proverb">🔗 The only way to deal with fear is to face it head-on. 🔗</div><div class="source">James Baldwin</div>`,
+        `<div class="proverb">🪞 Knowing yourself is the beginning of all wisdom. 🪞</div><div class="source">Aristotle</div>`,
+        `<div class="proverb">🌌 You cannot step twice into the same river, for other waters are continually flowing on. 🌌</div><div class="source">Heraclitus</div>`,
+        `<div class="proverb">🌺 Your task is not to seek for love, but merely to seek and find all the barriers within yourself that you have built against it. 🌺</div><div class="source">Rumi</div>`,
+        `<div class="proverb">🌳 The only true wisdom is in knowing you know nothing. 🌳</div><div class="source">Socrates</div>`,
+        `<div class="proverb">🌱 The privilege of a lifetime is to become who you truly are. 🌱</div><div class="source">Carl Jung</div>`,
+        `<div class="proverb">💡 The mind is everything. What you think you become. 💡</div><div class="source">Buddha</div>`,
+        `<div class="proverb">🔮 Change your thoughts and you change your world. 🔮</div><div class="source">Neville Goddard</div>`,
+        `<div class="proverb">🌪️ He who fights with monsters should be careful lest he thereby become a monster. 🌪️</div><div class="source">Friedrich Nietzsche</div>`,
+        `<div class="proverb">🌌 We are what we repeatedly do. Excellence, then, is not an act, but a habit. 🌌</div><div class="source">Aristotle</div>`,
+        `<div class="proverb">✨ The only thing necessary for the triumph of evil is for good men to do nothing. ✨</div><div class="source">Edmund Burke</div>`,
+        `<div class="proverb">🕰️ Life is what happens when you're busy making other plans. 🕰️</div><div class="source">John Lennon</div>`,
+        `<div class="proverb">🔥 The journey of a thousand miles begins with one step. 🔥</div><div class="source">Lao Tzu</div>`,
+        `<div class="proverb">🌍 It does not matter how slowly you go as long as you do not stop. 🌍</div><div class="source">Confucius</div>`,
+        `<div class="proverb">🌳 Not everything that is faced can be changed, but nothing can be changed until it is faced. 🌳</div><div class="source">James Baldwin</div>`,
+        `<div class="proverb">🌀 It is not the strongest of the species that survive, nor the most intelligent, but the one most responsive to change. 🌀</div><div class="source">Charles Darwin</div>`,
+        `<div class="proverb">🌠 The only thing we have to fear is fear itself. 🌠</div><div class="source">Franklin D. Roosevelt</div>`,
+        `<div class="proverb">🕊️ You must be the change you wish to see in the world. 🕊️</div><div class="source">Mahatma Gandhi</div>`,
+        `<div class="proverb">🌻 I am not what happened to me, I am what I choose to become. 🌻</div><div class="source">Carl Jung</div>`,
+        `<div class="proverb">🌍 Don't cry because it's over, smile because it happened. 🌍</div><div class="source">Dr. Seuss</div>`,
+      ];
+
+      function showRandomText(arraytoshow) {
+        const randomIndex = Math.floor(
+          Math.random() * window.arraytoshow.length
+        );
+        const randomText = window.arraytoshow[randomIndex];
+        document.getElementById("randomText").innerHTML = randomText;
+      }
+
+      function showProverbs() {
+        window.arraytoshow = proverbsArray;
+        showRandomText(window.arraytoshow);
+        document.getElementById("aff").classList.remove("active");
+        document.getElementById("foc").classList.remove("active");
+        document.getElementById("prov").classList.add("active");
+      }
+      function showAffirmations() {
+        window.arraytoshow = affirmations;
+        showRandomText(window.arraytoshow);
+        document.getElementById("prov").classList.remove("active");
+        document.getElementById("foc").classList.remove("active");
+        document.getElementById("aff").classList.add("active");
+      }
+      function showFocus() {
+        window.arraytoshow = focusArray;
+        showRandomText(window.arraytoshow);
+        document.getElementById("prov").classList.remove("active");
+        document.getElementById("aff").classList.remove("active");
+        document.getElementById("foc").classList.add("active");
+      }
+
+      setInterval(showRandomText, 11000);
+      window.arraytoshow = focusArray;
+      showRandomText(window.arraytoshow);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("aff")
+          .addEventListener("click", showAffirmations);
+        document.getElementById("prov").addEventListener("click", showProverbs);
+        document.getElementById("foc").addEventListener("click", showFocus);
+      });
+    </script>
+  </body>
+</html>
