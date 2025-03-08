@@ -8,15 +8,20 @@ const today = new Date();
 </footer>
 <style>
   footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     bottom: 0;
-    width: 100vw;
-    height: 2.5rem;
-    padding: 1em 0.3em 1em 0.3em;
-    background: linear-gradient(var(--gray-gradient)) no-repeat;
+    /* width: 50%; */
     color: rgb(var(--gray));
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 1em;
+    margin: 1em;
+    padding: 1em 1em;
+    background-color: rgb(255, 255, 255);
+    box-shadow: var(--box-shadow);
+    border-radius: 0.5em;
   }
   .social-links {
     display: flex;
