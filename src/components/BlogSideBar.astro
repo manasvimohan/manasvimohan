@@ -1,0 +1,157 @@
+---
+export interface Props {
+  relatedByTags?: { id: string; data: { title: string } }[];
+  relatedByCategories?: { id: string; data: { title: string } }[];
+}
+
+const { relatedByTags = [], relatedByCategories = [] } = Astro.props;
+---
+
+
+{(relatedByTags.length > 0 || relatedByCategories.length > 0) && (
+  <aside class="sidebar">
+    <!-- Related Posts by Tags -->
+    {relatedByTags.length > 0 && (
+        <div class="related-posts tags">
+          <h3>Related by Tags</h3>
+        <div class="related-list">
+          {relatedByTags.map((post) => (
+
+              <div class="related-links" onclick={`window.location.href='/blog/${post.id}/'`}>
+                {post.data.title}
+              </div>
+
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Related Posts by Categories -->
+    {relatedByCategories.length > 0 && (
+        <div class="related-posts categories">
+          <h3>Related Articles</h3>
+        <div class="related-list">
+          {relatedByCategories.map((post) => (
+
+              <div class="related-links" onclick={`window.location.href='/blog/${post.id}/'`}>
+                {post.data.title}
+              </div>
+
+          ))}
+        </div>
+      </div>
+    )}
+  </aside>
+)}
+
+
+<style>
+    aside {
+        background: white;
+    }
+aside h3{
+    position: absolute;
+    background-color: white;
+    padding: 0.5em;
+    margin: 0;
+    /* box-shadow: var(--box-shadow); */
+    border-radius: 0.5em;
+
+}
+.tags h3 {
+    background-color: rgb(139, 139, 250);
+    color: white;
+}
+
+.categories h3 {
+    background-color: rgb(95, 112, 72);
+    color: white;
+}
+    .tags, .categories {
+            background-color: rgb(255, 255, 255);
+            padding: 1em 0.5em;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        color: black;
+        overflow-y: scroll;
+        border-radius: 0.5em;
+        /* box-shadow: var(--box-shadow); */
+    }
+    aside {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+        /* padding: 0.7em; */
+        border-radius: 0.7em;
+        box-shadow: var(--box-shadow);
+        overflow: auto;
+        font-size: 0.8em;
+        gap: 1em;
+      }
+     .related-list{
+        margin-top: 3em;
+     }
+     
+      .related-links {
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 0.5em;
+        padding: 0.5em;
+        margin: 0.5em;
+        transition: 0.2s;
+        /* min-height: 100px; */
+        display: flex;
+       
+      }
+      .related-links:hover {
+        background-color: rgb(82, 82, 82);
+        color: aliceblue;
+      }
+
+     @media (orientation: portrait) {
+        h3{
+    position: relative;
+    width: 20em;
+    margin-bottom: 0;
+
+}
+        aside {
+        width: 100%;
+         display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+    }
+    .tags, .categories {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: start;
+        background-color: yellow;
+
+        overflow-x: hidden;
+        
+    }
+    .related-links {
+        min-width: 7em; 
+    }
+
+    .related-list {
+        /* position: fixed; */
+        bottom: 100px;
+        display: flex;
+        flex-direction: row;
+        background-color: green;
+        margin: 0 1em;
+        width: 90%;
+        overflow-x: scroll;
+        height: 100%;
+    }
+    .related-posts {
+        margin-bottom: 0;
+    }
+
+    }
+
+</style>
