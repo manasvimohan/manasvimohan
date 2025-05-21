@@ -24,18 +24,17 @@
 [![Telegram][telegram-shield]][telegram-url]
 [![Website][website-shield]][website-url]
 
-🌟 Currently a Solution Architect at Stellantis, having over 14 years of professional experiance in wide variety of fields, I thrive in the world of Full Stack Development and leadership. Before this, I was a Senior Tech Lead at Sterlite Technologies.
+🌟 Currently Leading GenAI and AI/ML research in Stellantis, having over 14 years of professional experiance in wide variety of fields, I thrive in the world of Full Stack Development and leadership.
 
 🚀 My Tech Stack
 - Languages: Python, JavaScript, Solidity
-- Scripting: Shell Scripting
 - Cloud: AWS, GCP
 - Blockchain: Ethereum Virtual Machine, Smart Contracts
 
 🌍 Domains of Expertise
 - Life Sciences & Process Manufacturing
 - Automobile Industry
-- Artificial Intelligence, Machine Learning, NLP, and LLM
+- Artificial Intelligence, Machine Learning, NLP, and LLM/ GenAI
 
 I’m passionate about solving complex problems and building innovative solutions. Let’s connect and create something amazing! 🤝
 
